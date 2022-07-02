@@ -1,0 +1,119 @@
+@import "../../assets/styles/vars"
+@import "../../assets/styles/mixins"
+@import "../../assets/styles/animate"
+
+$prefixClass = starry-button
+
+$button-default-width = 40px
+$button-default-height = 40px
+$button-small-width = 30px
+$button-small-height = 30px
+$button-large-width = 50px
+$button-large-height = 50px
+$button-default-font-size = $font-size
+$button-large-font-size = $font-size-large
+$button-small-font-size = $font-size-small
+$button-small-padding = 0 10px
+$button-large-padding = 0 40px
+$button-default-padding = 0 30px
+$button-box-shadow = 0 2px 0 rgba(15, 35, 95, .02)
+$button-disabled-opacity = .6
+
+.{$prefixClass}
+   display: flex
+   margin: 0
+   justify-content: center
+   align-items: center
+   cursor: pointer
+   background-image: none
+   white-space: nowrap
+   line-height: 1.5
+   touch-action: manipulation
+   padding: $button-default-padding
+   font-size: $button-default-font-size
+   height: $button-default-height
+   user-select: none
+   color: $font-main
+   background-color: #ffffff
+   border-color: $border-color
+   border-radius: $border-radius
+   outline: none
+   text-shadow: $default-text-shadow
+   starry-button-hover($default-color)
+   transition: all $default-transition
+
+
+   &.{$prefixClass}-primary
+      starry-button-hollow($primary-main)
+      &.{$prefixClass}-hollow
+         starry-button-hollow($primary-main)
+
+   &.{$prefixClass}-default
+      color: $font-main
+      background-color: #ffffff
+      border: 1px solid $default-color
+      text-shadow: none
+      &:not(.{$prefixClass}-disabled):not(.{$prefixClass}-loading)
+         &:hover,
+         &:active
+            border: 1px solid $primary-main
+            color: $primary-main
+      &.{$prefixClass}-hollow
+         starry-button-hollow($default-color)
+
+   &.{$prefixClass}-warning
+      starry-button-hover($warning-main)
+      &.{$prefixClass}-hollow
+         starry-button-hollow($warning-main)
+
+   &.{$prefixClass}-error
+      starry-button-hover($error-main)
+      &.{$prefixClass}-hollow
+         starry-button-hollow($error-main)
+
+   &.{$prefixClass}-success
+      starry-button-hover($success-main)
+      &.{$prefixClass}-hollow
+         starry-button-hollow($info-main)
+
+   &.{$prefixClass}-disabled
+      cursor: not-allowed
+      opacity: $button-disabled-opacity
+      &.{$prefixClass}-hollow
+         background-color: transparent !important
+      &.{$prefixClass}-normal
+         starry-button-hover($disabled-main)
+         text-shadow: none
+         border: 1px solid $border-color
+         color: $disabled-contrast-text !important
+         opacity: 1
+         &.{$prefixClass}-hollow
+            color: $disabled-contrast-text
+
+   &.{$prefixClass}-flex
+      width: 100%
+      display: flex
+
+
+   &.{$prefixClass}-loading
+      cursor: not-allowed
+
+   &.{$prefixClass}-size-large
+      font-size: $button-large-font-size
+      padding: $button-large-padding
+      height: $button-large-height
+
+   &.{$prefixClass}-size-small
+      font-size: $button-small-font-size
+      padding: $button-small-padding
+      height: $button-small-height
+
+   &.{$prefixClass}-circle
+      width: $button-default-width
+      height: $button-default-height
+      border-radius: 50%
+      padding: 0
+      box-shadow: $default-section-shadow
+
+
+
